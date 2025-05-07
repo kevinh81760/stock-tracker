@@ -23,3 +23,6 @@ instance/
 # VSCode and other editor settings
 .vscode/
 .idea/
+
+# Custom config file
+config.*
