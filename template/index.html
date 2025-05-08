@@ -8,7 +8,7 @@
     <div id="section-1">
         <h1>Stock Search</h1>
     
-        <form id="stock-form" method="POST">
+        <form id="stock-form" onSubmit="loadCompany(event)">
             <label>Enter Stock Ticker Symbol</label>
             <input type="text" id="ticker" name="ticker">
             <br>
@@ -27,6 +27,9 @@
             <button class="tab-button" onclick="openTab('history')">Search History</button>
           </div>
     </div>
+
+    <!-- Placeholder to show results -->
+    <div id="output"></div>
 
 </body>
 </html>

@@ -30,7 +30,11 @@ def company():
     # dumps response from server response into data and returns a json file
     data = response.json()
     return jsonify({
-        "name": data["name"]
+        "name": data["name"],
+        "ticker": data["ticker"],
+        "exchangeCode": data["exchangeCode"],
+        "startDate": data["startDate"],
+        "description": data["description"]
     })
 
 if __name__ == "__main__":
