@@ -12,9 +12,21 @@
             <label>Enter Stock Ticker Symbol</label>
             <input type="text" id="ticker" name="ticker">
             <br>
-            <button type="submit">Search</button>
-            <button type="button" onclick="document.getElementById('ticker').value = '';">Clear</button>
+            <div class="user-buttons">
+                <button type="submit" class="user-button">Search</button>
+                <button type="button" class="user-button" onclick="document.getElementById('ticker').value = '';">Clear</button>
+            </div>
+            
         </form>
     </div>
+
+    <div class="section-2">
+        <div class="tab-bar">
+            <button class="tab-button" onclick="openTab('outlook')">Company Outlook</button>
+            <button class="tab-button" onclick="openTab('summary')">Stock Summary</button>
+            <button class="tab-button" onclick="openTab('history')">Search History</button>
+          </div>
+    </div>
+
 </body>
 </html>
