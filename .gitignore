@@ -24,5 +24,4 @@ instance/
 .vscode/
 .idea/
 
-# Custom config file
-config.*
+
