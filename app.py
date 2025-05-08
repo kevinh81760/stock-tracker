@@ -19,22 +19,44 @@ def company():
     
     # creates headers and url for api call
     headers = {"Authorization": f"Token {api_key}"}
-    url = f"https://api.tiingo.com/tiingo/daily/{ticker}"
-
-    response = requests.get(url, headers=headers)
-
-    # checks validity  
-    if response.status_code != 200:
+    
+    # meta data
+    meta_url = f"https://api.tiingo.com/tiingo/daily/{ticker}"
+    meta_response = requests.get(meta_url, headers=headers)
+    if meta_response.status_code != 200:
         return jsonify({"error": "Invalid ticker symbol or API error"}), 404
+    company_data = meta_response.json()
+    
+    # stock summary
+    stock_url = f"https://api.tiingo.com/iex/{ticker}"
+    stock_response = requests.get(stock_url, headers=headers)
+    if stock_response.status_code != 200:
+        return jsonify({"error": "Invalid ticker symbol or API error"}), 404
+    stock_data_list = stock_response.json()
+    
+    # bc tiingo can take in multiple parameters, we have to access the first value of the lsit to grab stock data
+    if not stock_data_list:
+        return jsonify({"error": "No stock data returned"}), 404
+    stock_data = stock_data_list[0]
 
-    # dumps response from server response into data and returns a json file
-    data = response.json()
     return jsonify({
-        "name": data["name"],
-        "ticker": data["ticker"],
-        "exchangeCode": data["exchangeCode"],
-        "startDate": data["startDate"],
-        "description": data["description"]
+        "company": {
+            "name": company_data["name"],
+            "ticker": company_data["ticker"],
+            "exchangeCode": company_data["exchangeCode"],
+            "startDate": company_data["startDate"],
+            "description": company_data["description"]
+        },
+        "stock": {
+            "ticker": stock_data["ticker"],
+            "timestamp": stock_data["timestamp"],
+            "prevClose": stock_data["prevClose"],
+            "open": stock_data["open"],
+            "high": stock_data["high"],
+            "low": stock_data["low"],
+            "last": stock_data["last"],
+            "volume": stock_data["volume"]
+        }
     })
 
 if __name__ == "__main__":
