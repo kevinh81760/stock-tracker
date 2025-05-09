@@ -16,20 +16,25 @@
                 <button type="submit" class="user-button">Search</button>
                 <button type="button" class="user-button" onclick="document.getElementById('ticker').value = '';">Clear</button>
             </div>
-            
         </form>
     </div>
 
+    <div id="status">Ready</div>
+
     <div class="section-2">
         <div class="tab-bar">
-            <button class="tab-button" onclick="openTab('outlook')">Company Outlook</button>
+            <button class="tab-button active" onclick="openTab('outlook')">Company Outlook</button>
             <button class="tab-button" onclick="openTab('summary')">Stock Summary</button>
             <button class="tab-button" onclick="openTab('history')">Search History</button>
-          </div>
+        </div>
     </div>
 
-    <!-- Placeholder to show results -->
-    <div id="output"></div>
+    <div id="tab-content">
+        <div id="outlook" class="tab-content"></div>
+        <div id="summary" class="tab-content" style="display: none;"></div>
+        <div id="history" class="tab-content" style="display: none;"></div>
+    </div>
 
+    <script src="/static/script.js"></script>
 </body>
 </html>
