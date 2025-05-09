@@ -29,4 +29,26 @@ This is a Flask-based web application that allows users to retrieve and view rea
 - **Deployment**: AWS EC2 + nginx
 
 ## 📂 Project Structure
-
+stock_tracker/
+├── app.py # Main Flask app
+├── config.py # API keys and Flask config
+├── .env # Environment variables (not tracked)
+├── requirements.txt # Python dependencies
+├── README.md
+│
+├── db/
+│ ├── init_db.py # Initializes the SQLite database
+│ └── stocks.db # SQLite DB (auto-generated)
+│
+├── models/
+│ └── models.py # SQLAlchemy models
+│
+├── static/
+│ ├── script.js # JS fetch + tab switching logic
+│ └── styles.css # Styling for layout + tables
+│
+├── templates/
+│ └── index.html # Main HTML file
+│
+├── instance/ # Optional instance config
+└── venv/ # Python virtual environment
